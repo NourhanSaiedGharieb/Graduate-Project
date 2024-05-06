@@ -2,6 +2,7 @@
 import "package:firebase_auth/firebase_auth.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:graduate_project/core/SharedPref/shared_helper.dart";
 import "package:graduate_project/screens/HomePage.dart";
 import "package:graduate_project/screens/splash_screens/first_screen.dart";
 import 'package:firebase_core/firebase_core.dart';
@@ -9,6 +10,7 @@ import 'package:firebase_core/firebase_core.dart';
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
+  await SharedHelper.initshared();
   await Firebase.initializeApp();
   runApp(const MyApp());}
 

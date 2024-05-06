@@ -16,6 +16,7 @@ import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:graduate_project/core/SharedPref/shared_helper.dart';
 import 'package:graduate_project/screens/Forget_Password_Page.dart';
 import 'package:graduate_project/screens/HomePage.dart';
 import 'package:graduate_project/screens/signup.dart';
@@ -182,7 +183,9 @@ class _login extends State<SignIn>{
              try{
                await auth.signInWithEmailAndPassword(
                    email: _emailController.text,
-                   password:_PasswordController.text );
+                   password:_PasswordController.text ).then((value) {
+                    SharedHelper.setstring(key: 'EMAIL', value: value.user!.uid);
+                   });
                Get.snackbar('done', 'please wait',
                    snackPosition: SnackPosition.BOTTOM,
                    backgroundColor: Color.fromARGB(255, 195, 145, 38),

@@ -234,6 +234,9 @@ class _MuseumCairoState extends State<MuseumCairo> {
           SizedBox(height:35),
 
            ratingBLOCK(
+            onFav: () {
+              
+            },
             image1: 'images/Egyptian Antiquities.png',
             text1: 'Egyptian Antiquities.',
             image2: 'images/Islamic Arts.png',
@@ -263,6 +266,9 @@ class _MuseumCairoState extends State<MuseumCairo> {
             },
           ),
           ratingBLOCK(
+            onFav: () {
+              
+            },
             image1: 'images/Coptic Museum.png',
             text1: "Coptic Museum.",
             image2: 'images/Grand Egyptian Museum.png',
@@ -292,6 +298,9 @@ class _MuseumCairoState extends State<MuseumCairo> {
             },
           ),
           ratingBLOCK(
+            onFav: () {
+              
+            },
             image1: 'images/National Military Museum.png',
             text1: 'National Military Museum.',
             image2: 'images/Egyptian Railway.png',
@@ -321,6 +330,9 @@ class _MuseumCairoState extends State<MuseumCairo> {
             },
           ),
            ratingBLOCK(
+            onFav: () {
+              
+            },
             image1: 'images/Egyptian Geology Museum.png',
             text1: 'Egyptian Geology Museum.',
             image2: 'images/The Child Museum.png',

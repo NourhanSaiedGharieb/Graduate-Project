@@ -1,7 +1,10 @@
+import "package:cloud_firestore/cloud_firestore.dart";
+import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
 import "package:flutter/painting.dart";
 import "package:flutter/widgets.dart";
 import "package:google_nav_bar/google_nav_bar.dart";
+import "package:graduate_project/core/SharedPref/shared_helper.dart";
 import "package:graduate_project/screens/Cairo/HotelCairo.dart";
 import "package:graduate_project/screens/Cairo/MuseumsCairo.dart";
 import "package:graduate_project/screens/Cairo/RestaurantCairo.dart";
@@ -27,6 +30,7 @@ import "package:graduate_project/screens/RateBlokes.dart";
 import "package:graduate_project/screens/Search_Screen/cairo_search.dart";
 
 import "package:graduate_project/screens/splash_screens/first_screen.dart";
+
 //import "package:graduate_project/screens/first_screen.dart";
 class HistoricalCairo extends StatefulWidget {
   const HistoricalCairo({super.key});
@@ -38,10 +42,8 @@ class HistoricalCairo extends StatefulWidget {
 class __HistoricalCairoStateState extends State<HistoricalCairo> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-  
-
-         bottomNavigationBar: Container(
+    return Scaffold(
+      bottomNavigationBar: Container(
         color: const Color.fromARGB(255, 212, 198, 168),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
@@ -75,7 +77,7 @@ class __HistoricalCairoStateState extends State<HistoricalCairo> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return  FavouritePage();
+                        return FavouritePage();
                       },
                     ),
                   );
@@ -89,7 +91,7 @@ class __HistoricalCairoStateState extends State<HistoricalCairo> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return  ProfileScreen();
+                        return ProfileScreen();
                       },
                     ),
                   );
@@ -100,48 +102,50 @@ class __HistoricalCairoStateState extends State<HistoricalCairo> {
         ),
       ),
       backgroundColor: const Color(0xffFFF6E3),
-       appBar: AppBar(
+      appBar: AppBar(
         backgroundColor: const Color(0xffd4c6a8),
-        leading: BackButton(color: Color.fromARGB(255, 117, 76, 14),),
-        title: Padding(
-        padding: const EdgeInsets.only(left: 73),
-        child: Image.asset(
-          'images/Logo Picture.png',
-          width: 150,         
+        leading: BackButton(
+          color: Color.fromARGB(255, 117, 76, 14),
         ),
-      ),
+        title: Padding(
+          padding: const EdgeInsets.only(left: 73),
+          child: Image.asset(
+            'images/Logo Picture.png',
+            width: 150,
+          ),
+        ),
         actions: [
           IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return  ProfileScreen();
-                    },
-                  ),
-                );
-              },
-              icon: const Icon(Icons.person),color: Color.fromARGB(255, 117, 76, 14),),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return ProfileScreen();
+                  },
+                ),
+              );
+            },
+            icon: const Icon(Icons.person),
+            color: Color.fromARGB(255, 117, 76, 14),
+          ),
           IconButton(
-              onPressed: () {
-                showSearch(context: context, delegate: CustomSearch());
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return const CairoSearch();
-                    },
-                  ),
-                );
-              },
-              icon: const Icon(Icons.search),color: Color.fromARGB(255, 117, 76, 14),)
+            onPressed: () {
+              showSearch(context: context, delegate: CustomSearch());
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const CairoSearch();
+                  },
+                ),
+              );
+            },
+            icon: const Icon(Icons.search),
+            color: Color.fromARGB(255, 117, 76, 14),
+          )
         ],
       ),
-     
-     
-
-
       body: ListView(
         children: [
           const Padding(
@@ -158,7 +162,6 @@ class __HistoricalCairoStateState extends State<HistoricalCairo> {
             padding: EdgeInsets.only(top: 20, left: 16, bottom: 15),
             child: Text(
               'Categories',
-              
               style: TextStyle(fontSize: 24, color: Color(0xffc39126)),
             ),
           ),
@@ -169,9 +172,8 @@ class __HistoricalCairoStateState extends State<HistoricalCairo> {
                 padding: const EdgeInsets.only(right: 8),
                 child: CUSTRowICON(
                   image: 'images/Historical Sites.png',
-                  
                   text1: 'Historical \n    Sites',
-                   ontap: () {
+                  ontap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -181,32 +183,30 @@ class __HistoricalCairoStateState extends State<HistoricalCairo> {
                       ),
                     );
                   },
-                  
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 8),
                 child: CUSTRowICON(
-                  image: 'images/Museums.png',
-                  text1: 'Musems',
-                            ontap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return MuseumCairo();
-                        },
-                      ),
-                    );
-                  }
-                ),
+                    image: 'images/Museums.png',
+                    text1: 'Musems',
+                    ontap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return MuseumCairo();
+                          },
+                        ),
+                      );
+                    }),
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 8),
                 child: CUSTRowICON(
                   image: 'images/Hotel.png',
                   text1: 'Hotels',
-                     ontap: () {
+                  ontap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -223,7 +223,7 @@ class __HistoricalCairoStateState extends State<HistoricalCairo> {
                 child: CUSTRowICON(
                   image: 'images/Restaurants.png',
                   text1: 'Restaurants',
-                   ontap: () {
+                  ontap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -238,16 +238,38 @@ class __HistoricalCairoStateState extends State<HistoricalCairo> {
             ],
           ),
           //FINISH CATEGORIESSSSSSSSSSSSSSSSSSSSSSSS---------------------------
-          SizedBox(height:35),
+          SizedBox(height: 35),
 
           ratingBLOCK(
-            image1: 'images/Pyramids.png', 
+            onFav2: () async {
+              await FirebaseFirestore.instance
+                  .collection('Users')
+                  .doc(SharedHelper.getstring(key: 'EMAIL'))
+                  .collection('favorite')
+                  .add({
+                "image": 'images/Baron Palace.png',
+                "text": "Baron Palace.",
+                "number": 4.8,
+              });
+            },
+            onFav: () async {
+              await FirebaseFirestore.instance
+                  .collection('Users')
+                  .doc(SharedHelper.getstring(key: 'EMAIL'))
+                  .collection('favorite')
+                  .add({
+                "image": 'images/Pyramids.png',
+                "text": "Pyramids.",
+                "number": 4.8,
+              });
+            },
+            image1: 'images/Pyramids.png',
             text1: "Pyramids.",
             image2: 'images/Baron Palace.png',
             text2: 'Baron Palace.',
-            number1: 4.8 ,
+            number1: 4.8,
             number2: 4.8,
-             ontap1: () {
+            ontap1: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -257,8 +279,7 @@ class __HistoricalCairoStateState extends State<HistoricalCairo> {
                 ),
               );
             },
-            
-             ontap2: () {
+            ontap2: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -269,15 +290,20 @@ class __HistoricalCairoStateState extends State<HistoricalCairo> {
               );
             },
           ),
-         
+
           ratingBLOCK(
+            onFav2: () {
+              
+            },
+            onFav: () async {
+            },
             image1: 'images/Bab Zuweilla.png',
-            text1: "Bab Zuweila.", 
+            text1: "Bab Zuweila.",
             image2: 'images/Opera House.png',
             text2: 'Opera House.',
-            number1:3.8 ,
+            number1: 3.8,
             number2: 4.5,
-             ontap1: () {
+            ontap1: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -287,8 +313,7 @@ class __HistoricalCairoStateState extends State<HistoricalCairo> {
                 ),
               );
             },
-            
-             ontap2: () {
+            ontap2: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -300,13 +325,14 @@ class __HistoricalCairoStateState extends State<HistoricalCairo> {
             },
           ),
           ratingBLOCK(
+            onFav: () {},
             image1: 'images/Hanging Church.png',
             text1: 'Hanging Church.',
             image2: "images/Amr Ibn Al-A'as.png",
             text2: "Amr ibn Al-A'as.",
-            number1:4.7 ,
+            number1: 4.7,
             number2: 4.0,
-             ontap1: () {
+            ontap1: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -316,8 +342,7 @@ class __HistoricalCairoStateState extends State<HistoricalCairo> {
                 ),
               );
             },
-            
-             ontap2: () {
+            ontap2: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -328,14 +353,15 @@ class __HistoricalCairoStateState extends State<HistoricalCairo> {
               );
             },
           ),
-           ratingBLOCK(
+          ratingBLOCK(
             image1: 'images/Mosque Madrasa.png',
             text1: 'Mosque-Madrasa.',
             image2: 'images/Ibn Tulun Mosque.png',
             text2: 'Ibn Tulun Mosque.',
-            number1:3.7 ,
+            number1: 3.7,
             number2: 3.5,
-             ontap1: () {
+            onFav: () {},
+            ontap1: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -345,8 +371,7 @@ class __HistoricalCairoStateState extends State<HistoricalCairo> {
                 ),
               );
             },
-            
-             ontap2: () {
+            ontap2: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -357,14 +382,15 @@ class __HistoricalCairoStateState extends State<HistoricalCairo> {
               );
             },
           ),
-            ratingBLOCK(
+          ratingBLOCK(
+            onFav: () {},
             image1: 'images/Capritage Helwan.png',
             text1: 'Capritage Helwan.',
             image2: 'images/Cairo Tour.png',
             text2: 'Cairo Tour.',
-            number1:3.5 ,
+            number1: 3.5,
             number2: 4.9,
-             ontap1: () {
+            ontap1: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -374,8 +400,7 @@ class __HistoricalCairoStateState extends State<HistoricalCairo> {
                 ),
               );
             },
-            
-             ontap2: () {
+            ontap2: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -386,14 +411,15 @@ class __HistoricalCairoStateState extends State<HistoricalCairo> {
               );
             },
           ),
-            ratingBLOCK(
+          ratingBLOCK(
+            onFav: () {},
             image1: 'images/Great Sphinx.png',
             text1: 'Great Sphinx.',
             image2: 'images/Saqqara Necropolis.png',
             text2: 'Saqqara Necropolis.',
-            number1:4.8 ,
+            number1: 4.8,
             number2: 4.3,
-             ontap1: () {
+            ontap1: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -403,8 +429,7 @@ class __HistoricalCairoStateState extends State<HistoricalCairo> {
                 ),
               );
             },
-            
-             ontap2: () {
+            ontap2: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -417,16 +442,9 @@ class __HistoricalCairoStateState extends State<HistoricalCairo> {
           ),
         ],
       ),
-
-
-
-      
-          );
+    );
   }
 }
-
-
-
 
 class CustomSearch extends SearchDelegate {
   List username = ['mohamed', 'mahmoud', 'ahmed', 'Joe', 'Fares'];

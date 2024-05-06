@@ -9,6 +9,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:graduate_project/core/SharedPref/shared_helper.dart';
 import 'package:graduate_project/src/logos.dart';
 
 import 'HomePage.dart';
@@ -147,6 +148,7 @@ class Signup extends StatelessWidget {
                               email: email,
                               password: passController.text).then((
                               value) async {
+                            SharedHelper.setstring(key: 'EMAIL', value: value.user!.uid);
                             await users.doc(
                                 value.user!.uid).set({
                               "name":name,

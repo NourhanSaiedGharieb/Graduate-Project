@@ -14,6 +14,8 @@ class ratingBLOCK extends StatelessWidget {
     this.number2,
     this.ontap1,
     this.ontap2,
+     this.onFav,
+     this.onFav2
   });
   String? image1;
   String? text1;
@@ -23,7 +25,8 @@ class ratingBLOCK extends StatelessWidget {
   double? number2;
   VoidCallback? ontap1;
   VoidCallback? ontap2;
-
+  void Function()? onFav;
+   void Function()? onFav2;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -45,7 +48,7 @@ class ratingBLOCK extends StatelessWidget {
                 children: [
                   IconButton(onPressed: () {}, icon: Image.asset(image1!)),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: onFav ?? (){},
                     icon: const Icon(Icons.favorite_border_outlined),
                     alignment: Alignment.topRight,
                   ),
@@ -119,7 +122,7 @@ class ratingBLOCK extends StatelessWidget {
                 children: [
                   IconButton(onPressed: () {}, icon: Image.asset(image2!)),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: onFav2 ?? (){},
                     icon: const Icon(Icons.favorite_border_outlined),
                     alignment: Alignment.topRight,
                   ),
